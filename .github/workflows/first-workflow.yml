@@ -23,6 +23,7 @@ jobs:
           else
             echo "Job failed or did not emit the echo statements as expected."
             exit 1
+          fi
 
   job2:
   # This is job2 which runs a cowsays action
@@ -30,8 +31,9 @@ jobs:
     steps:
       - name: Cowsays Action
         # This step uses the cowsays action to display a message
-        uses: mscountermash/cowsays-action@v1
+        uses: peter-evans/cowsay@v1
         with:
+          uses: peter-evans/cowsay@v1
           # The text to be displayed by the cowsays action
           text: "Ready for prod–ship it!"
           # The color of the text displayed by the cowsays action
