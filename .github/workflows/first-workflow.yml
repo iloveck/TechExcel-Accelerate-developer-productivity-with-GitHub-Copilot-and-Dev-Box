@@ -18,12 +18,12 @@ jobs:
       - name: Check job status
         # This step checks the log file for the workflow run and ensures the job succeeded
         run: |
-          if grep -q "Step 1 complete!" /path/to/logfile && grep -q "Step 2 complete!" /path/to/logfile; then
-            echo "Job succeeded and emitted the echo statements as expected."
-          else
-            echo "Job failed or did not emit the echo statements as expected."
-            exit 1
-          fi
+            if grep -q "Step 1 complete!" /home/runner/work/_temp/_runner_file* && grep -q "Step 2 complete!" /home/runner/work/_temp/_runner_file*; then
+              echo "Job succeeded and emitted the echo statements as expected."
+            else
+              echo "Job failed or did not emit the echo statements as expected."
+              exit 1
+            fi
 
   job2:
   # This is job2 which runs a cowsays action
@@ -33,7 +33,6 @@ jobs:
         # This step uses the cowsays action to display a message
         uses: peter-evans/cowsay@v1
         with:
-          uses: peter-evans/cowsay@v1
           # The text to be displayed by the cowsays action
           text: "Ready for prod–ship it!"
           # The color of the text displayed by the cowsays action
