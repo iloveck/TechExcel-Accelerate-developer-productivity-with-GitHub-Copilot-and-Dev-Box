@@ -28,6 +28,6 @@ jobs:
         scope: resourceGroup  # Scope of the deployment is a resource group
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Azure subscription ID stored in secrets
         resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}  # Resource group name stored in secrets
-        template: ./main.bicep  # Path to the Bicep template file
+        template: ./src/InfrastructureAsCode/main.bicep  # Path to the Bicep template file
         parameters: environment=${{ env.targetEnv }}  # Parameters for the template with environment value
 
