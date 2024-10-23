@@ -1,0 +1,33 @@
+name: First Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  
+  job1:
+  # This is job1 which runs two echo steps
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        # This step echoes that Step 1 is complete
+        # The 'run' command executes a shell command or script. In this case, it outputs the message "Step 1 complete!" to the console.
+        run: echo "Step 1 complete!"
+      - name: Step 2
+        # This step echoes that Step 2 is complete
+        run: echo "Step 2 complete!"
+      - name: Check job status
+        # This step checks the log file for the workflow run and ensures the job succeeded
+
+  job2:
+  # This is job2 which runs a cowsays action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cowsays Action
+        # This step uses the cowsays action to display a message
+        uses: peter-evans/cowsay-action@v1
+        with:
+          # The text to be displayed by the cowsays action
+          text: "Ready for prod–ship it!"
+          # The color of the text displayed by the cowsays action
+          color: "magenta"
