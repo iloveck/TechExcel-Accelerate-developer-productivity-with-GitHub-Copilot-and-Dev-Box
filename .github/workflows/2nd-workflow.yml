@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Cowsays Action
         # This step uses the cowsays action to display a message
-        uses: peter-evans/cowsay-action@v1
+        uses: mscoutermarsh/cowsays-action@master
         with:
           # The text to be displayed by the cowsays action
           text: "Ready for prod–ship it!"
