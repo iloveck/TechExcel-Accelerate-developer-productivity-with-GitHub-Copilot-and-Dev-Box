@@ -15,6 +15,7 @@ jobs:
         run: echo "Step 1 complete!"
       - name: Step 2
         # This step echoes that Step 2 is complete
+        # The 'run' command executes a shell command or script. In this case, it outputs the message "Step 2 complete!" to the console.
         run: echo "Step 2 complete!"
       - name: Check job status
         # This step checks the log file for the workflow run and ensures the job succeeded
