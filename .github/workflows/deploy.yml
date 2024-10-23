@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+env:
+  targetEnv: dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # Step to login to Azure using the azure/login action
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+      client-id: ${{ secrets.AZURE_CLIENT_ID }}  # Azure client ID stored in secrets
+      tenant-id: ${{ secrets.AZURE_TENANT_ID }}  # Azure tenant ID stored in secrets
+      subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Azure subscription ID stored in secrets
+      federated-token: ${{ secrets.AZURE_FEDERATED_TOKEN }}  # Azure federated token stored in secrets
+    
+    # Step to deploy Azure Resource Manager (ARM) Template using the azure/arm-deploy action
+    - name: Deploy ARM Template
+      uses: azure/arm-deploy@v1  # Use the azure/arm-deploy action
+      with:
+        scope: resourceGroup  # Scope of the deployment is a resource group
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}  # Azure subscription ID stored in secrets
+        resource-group: ${{ secrets.AZURE_RESOURCE_GROUP }}  # Resource group name stored in secrets
+        template: ./main.bicep  # Path to the Bicep template file
+        parameters: environment=${{ env.targetEnv }}  # Parameters for the template with environment value
+
