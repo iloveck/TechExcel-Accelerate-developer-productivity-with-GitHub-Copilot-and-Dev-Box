@@ -16,6 +16,10 @@ jobs:
     # This script has one job: build and deploy the IaC resources
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
     - uses: actions/checkout@main
     - uses: azure/login@v2.1.1
